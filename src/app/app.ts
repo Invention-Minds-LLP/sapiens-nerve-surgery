@@ -6,6 +6,7 @@ import { NavBar } from "./nav-bar/nav-bar";
 import { Footer } from "./footer/footer";
 import { CallBackFrom } from "./call-back-from/call-back-from";
 import { ContactForm } from "./contact-form/contact-form";
+import { Meta, Title } from '@angular/platform-browser';
 
 interface FAQ {
   question: string;
@@ -27,13 +28,23 @@ interface Service {
 })
 export class App {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private titleService: Title, private metaService: Meta) { }
   navOpen = false;
 
   appointmentForm!: any;
   callbackForm!: any;
 
   ngOnInit(): void {
+
+
+    this.titleService.setTitle(
+      'Expert Peripheral Nerve Surgery of the Hand in Malleshwaram | Sapiens Clinic'
+    );
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Specialized hand nerve surgery by Dr. Darshan Kumar A. Jain at Sapiens Clinic in Malleshwaram. Trusted care for peripheral nerve injuries, compression conditions, and advanced nerve repair procedures.'
+    });
 
     this.observeSubNav();
   }
