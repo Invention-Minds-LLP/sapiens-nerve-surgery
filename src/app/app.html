@@ -1,33 +1,7 @@
 <div class="page">
 
     <!-- Top header strip -->
-    <header class="topbar">
-        <div class="container topbar__inner">
-            <div class="brand">
-                <img class="brand__logo" src="./sapiens-logo.png" alt="Sapiens Clinic" />
-            </div>
-
-            <div class="topbar__meta">
-                <div class="metaItem">
-                    <span class="metaDot"></span>
-                    <span class="metaText">Evening OPD Consultation</span>
-                </div>
-                <div class="metaItem">
-                    <span class="metaDot"></span>
-                    <span class="metaText">Phone Number</span>
-                </div>
-                <div class="metaItem">
-                    <span class="metaDot"></span>
-                    <span class="metaText">Email Us Here</span>
-                </div>
-            </div>
-
-            <button class="burger" type="button" (click)="toggleNav()" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-
-    </header>
+    <app-nav-bar></app-nav-bar>
 
     <!-- HERO SECTION -->
     <section class="hero" id="top">
@@ -41,120 +15,133 @@
             <!-- LEFT CONTENT -->
             <div class="hero__left">
                 <h1 class="hero__title">
-                    Peripheral Nerve Surgery of the Hand
+                    <span> Peripheral Nerve</span> <br>
+                    Surgery of the Hand
                 </h1>
 
                 <p class="hero__subtitle">
                     Expert peripheral nerve evaluation and microsurgical care by
-                    Dr. Darshan Kumar A. Jain, Orthopedic Hand & Upper-Limb Specialist
+                    <span>Dr. Darshan Kumar A. Jain</span>, Orthopedic Hand & Upper-Limb Specialist
                 </p>
 
                 <div class="hero__cta">
-                    <button class="btn btn--gold" type="button">
+                    <button class="btn btn--gold" type="button" (click)="scrollTo('contact')">
                         Book Appointment
                     </button>
                 </div>
             </div>
 
             <!-- RIGHT CONTACT CARD (DESIGN MATCH) -->
-            <aside class="heroCard heroCard--design" id="contact">
-                <div class="heroCard__outer">
-                    <div class="heroCard__panel">
-                        <h3 class="heroCard__title2">Contact Us</h3>
-
-                        <form class="form form--design">
-                            <div class="field2">
-                                <!-- <label class="field2__label">NAME</label> -->
-                                <input class="field2__input" type="text" placeholder="Name" />
-                            </div>
-
-                            <div class="field2">
-                                <!-- <label class="field2__label">MOBILE NUMBER</label> -->
-
-                                    <input class="field2__input" type="tel" placeholder="Mobile Number"/>
-                                    <!-- <button class="otpRow__btn" type="button">SEND OTP</button> -->
-                            </div>
-
-                            <button class="submitBtn" type="submit">SUBMIT</button>
-                        </form>
-                    </div>
-                </div>
-            </aside>
+            <app-contact-form></app-contact-form>
 
 
         </div>
     </section>
 
-    <section>
+    <section class="heroNav">
 
         <!-- HERO NAVIGATION -->
-        <div class="heroNav">
-            <div class="container">
-                <nav class="nav nav--hero">
-                    <a href="#why">Peripheral Nerve Surgery Why?</a>
-                    <a href="#treatment">Treatment Procedure</a>
-                    <a href="#doctor">doctor</a>
-                    <a href="#faqs">FAQs</a>
-                    <a href="#contact">contact us</a>
-                </nav>
+        <div class="sub-nav-wrapper">
+            <!-- Left Arrow -->
+            <button class="nav-arrow nav-arrow-left" (click)="scrollLeft()" *ngIf="!menuOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+            </button>
+
+            <!-- Sub Navigation -->
+            <div class="sub-nav" [class.stuck]="isStuck">
+                <div class="sub-nav-scroll" #subNavScroll>
+                    <ul>
+                        <li class="li-1" tabindex="0" (click)="scrollTo('why')">Peripheral Nerve Surgery</li>
+                        <li class="li-2" tabindex="0" (click)="scrollTo('doctor')">Doctor</li>
+                        <li class="li-2" tabindex="0" (click)="scrollTo('treatment')">Treatment</li>
+                        <!-- <li class="li-2" tabindex="0" (click)="scrollTo('procedure')">Procedure</li> -->
+                        <!-- <li class="li-2" tabindex="0" (click)="scrollTo('')">Why?</li> -->
+                        <li class="li-2" tabindex="0" (click)="scrollTo('faqs')">FAQs</li>
+                        <li class="li-3" tabindex="0" (click)="scrollTo('contact')">Contact us</li>
+                    </ul>
+
+                </div>
             </div>
+
+            <!-- Right Arrow -->
+            <button class="nav-arrow nav-arrow-right" (click)="scrollRight()" *ngIf="!menuOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                </svg>
+            </button>
         </div>
     </section>
 
     <!-- Understanding -->
-    <section class="section section--card" id="why">
+    <div class="section section--card" id="why">
         <div class="container">
-            <h2 class="section__title">Understanding Peripheral Nerve Surgery of the Hand</h2>
+            <div class="top-card">
+                <h2 class="section__title">Understanding Peripheral Nerve Surgery of the Hand</h2>
 
-            <div class="contentGrid">
-                <article class="contentCard">
-                    <h3 class="contentCard__title">What Is Peripheral Nerve Surgery of the Hand?</h3>
-                    <p class="contentCard__text">
-                        Peripheral nerve surgery of the hand is performed to treat injuries or compression of nerves in
-                        the hand,
-                        wrist, or forearm that cause pain, numbness, weakness, or loss of function. These conditions may
-                        affect
-                        sensation, muscle control or coordination of the hand. The goal of peripheral nerve surgery of
-                        the hand
-                        is to relieve pressure on affected nerves, repair damaged nerve tissue and restore hand function
-                        as safely
-                        as possible. Depending on the diagnosis, surgery may involve nerve release, repair, or
-                        reconstruction using
-                        microsurgical techniques. Not all peripheral nerve-related hand problems require surgery.
-                        Careful clinical
-                        evaluation is always the first step.
-                    </p>
-                </article>
-            </div>
-
-            <div class="twoCol">
-                <article class="contentCard">
-                    <h3 class="contentCard__title">Symptoms When to Visit Sapiens Clinic</h3>
-                    <p class="contentCard__text">
-                        You should consult a hand nerve specialist if you experience:
-                    </p>
-                    <ul class="bullets">
-                        <li>Persistent numbness or tingling in fingers or hand</li>
-                        <li>Weak grip strength or difficulty holding objects</li>
-                        <li>Hand or wrist pain radiating to the arm</li>
-                        <li>Loss of sensation or coordination</li>
-                        <li>Muscle wasting or visible weakness in the hand</li>
-                        <li>Symptoms worsening at night or during repetitive work</li>
-                    </ul>
-                    <p class="contentCard__text">
-                        A timely consultation with Dr. Darshan Kumar A. Jain, an experienced orthopedic hand surgeon in
-                        Malleshwaram, Bangalore, Karnataka, helps identify peripheral nerve involvement early and
-                        prevent
-                        long-term damage.
-                    </p>
-                </article>
-
-                <div class="mediaCard" aria-label="hand image">
-                    <img src="./symptoms-hand.png" alt="Hand image" />
+                <div class="contentGrid">
+                    <div class="contentCard">
+                        <h3 class="contentCard__title">What Is Peripheral Nerve Surgery of the Hand?</h3>
+                        <p class="contentCard__text">
+                        <div>Peripheral nerve surgery of the hand is performed to treat injuries or compression of
+                            nerves
+                            in
+                            the hand.</div>
+                        <div>wrist, or forearm that cause pain, numbness, weakness, or loss of function. These
+                            conditions
+                            may
+                            affect
+                            sensation, muscle control or coordination of the hand. The goal of peripheral nerve surgery
+                            of
+                            the hand
+                            is to relieve pressure on affected nerves, repair damaged nerve tissue and restore hand
+                            function
+                            as safely
+                            as possible. Depending on the diagnosis, surgery may involve nerve release, repair, or
+                            reconstruction using
+                            microsurgical techniques.</div>
+                        <div>Not all peripheral nerve-related hand problems require surgery.
+                            Careful clinical
+                            evaluation is always the first step.
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <h3 class="twoCol-contentCard__title">Symptoms When to Visit Sapiens Clinic</h3>
             <div class="twoCol">
+                <article class="two-col-contentCard">
+                    <div class="flex">
+                        <p class="contentCard__text">
+                            You should consult a hand nerve specialist if you experience:
+                        </p>
+                        <ul class="two-col-bullets">
+                            <li>Persistent numbness or tingling in fingers or hand</li>
+                            <li>Weak grip strength or difficulty holding objects</li>
+                            <li>Hand or wrist pain radiating to the arm</li>
+                            <li>Loss of sensation or coordination</li>
+                            <li>Muscle wasting or visible weakness in the hand</li>
+                            <li>Symptoms worsening at night or during repetitive work</li>
+                        </ul>
+                    </div>
+                    <div class="mediaCard" aria-label="hand image">
+                        <img src="./symptoms-hand.png" alt="Hand image" />
+                    </div>
+
+                </article>
+
+
+
+                <p class="two-col-bullets">
+                    A timely consultation with Dr. Darshan Kumar A. Jain, an experienced orthopedic hand surgeon in
+                    Malleshwaram, Bangalore, Karnataka, helps identify peripheral nerve involvement early and
+                    prevent
+                    long-term damage.
+                </p>
+            </div>
+
+            <div class="twoCol-1">
                 <div class="mediaCard">
                     <img src="./who-is-this-surgery-for.png" alt="Hand image" />
                 </div>
@@ -169,29 +156,76 @@
                         <li>Experience progressive numbness or hand weakness</li>
                         <li>Have nerve injuries due to trauma or cuts</li>
                         <li>Show nerve damage on nerve conduction studies or imaging</li>
-                        <li>Require precise hand function for work or daily activities</li>
+
                     </ul>
+
+                    <div class="bullets">Require precise hand function for work or daily activities</div>
                 </article>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Doctor strip -->
     <section class="doctorStrip" id="doctor">
-        <div class="container doctorStrip__grid">
+        <div class=" doctorStrip__grid">
             <div class="doctorStrip__left">
                 <h3 class="doctorStrip__name">Dr. Darshan Kumar A. Jain</h3>
-                <ul class="ticks">
-                    <li>15+ years of experience in orthopedic and upper-limb surgery</li>
-                    <li>5000+ patients treated across hand, wrist, and nerve conditions</li>
-                    <li>Specialized focus on peripheral nerve repair and microsurgery</li>
-                    <li>Trusted for ethical, patient-first care</li>
+                <ul class="ticks curved-fill">
+                    <div class="fl">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path d="M2 12L4.5 9.5L9.5 14.5L19.5 4.5L22 7L9.5 19.5L2 12Z" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                        <li>
+
+                            <span>15+ years</span> of experience in orthopedic and upper-limb surgery
+                        </li>
+                    </div>
+
+                    <div class="fl">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path d="M2 12L4.5 9.5L9.5 14.5L19.5 4.5L22 7L9.5 19.5L2 12Z" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                        <li>
+                            <span>5000+ patients</span> treated across hand, wrist, and nerve conditions
+                        </li>
+                    </div>
+
+                    <div class="fl">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path d="M2 12L4.5 9.5L9.5 14.5L19.5 4.5L22 7L9.5 19.5L2 12Z" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <li>Specialized focus on <span>peripheral nerve repair</span> and <span>microsurgery</span></li>
+                    </div>
+
+                    <div class="fl">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path d="M2 12L4.5 9.5L9.5 14.5L19.5 4.5L22 7L9.5 19.5L2 12Z" stroke="white"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                        <li>Trusted for ethical, patient-first care</li>
+                    </div>
                 </ul>
             </div>
 
             <div class="doctorStrip__right">
-                <img src="./Darshan Kumar.png" alt="Dr. Darshan Kumar A. Jain" />
+                <div class="doctor-img-wrapper">
+                    <div class="">
+                        <div class="">
+                            <img src="./Darshan Kumar.png" alt="Dr. Darshan Kumar A. Jain" />
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -202,16 +236,16 @@
 
             <div class="fourCards">
                 <article class="miniCard">
-                    <h4 class="miniCard__title">Nerve Release Surgery</h4>
+                    <h4 class="miniCard__title">Nerve Repair</h4>
                     <p class="miniCard__text">
-                        Surgical decompression of compressed peripheral nerves to relieve pain, numbness, and weakness.
+                        Direct repair of injured peripheral nerves to restore signal transmission and hand function.
                     </p>
                 </article>
 
                 <article class="miniCard">
-                    <h4 class="miniCard__title">Nerve Repair</h4>
+                    <h4 class="miniCard__title">Nerve Release Surgery</h4>
                     <p class="miniCard__text">
-                        Direct repair of injured peripheral nerves to restore signal transmission and hand function.
+                        Surgical decompression of compressed peripheral nerves to relieve pain, numbness, and weakness.
                     </p>
                 </article>
 
@@ -235,266 +269,247 @@
     </section>
 
     <!-- Procedure -->
-    <section class="section section--imagePanel" id="treatment">
-        <div class="container imagePanel">
-            <div class="imagePanel__img">
-                <img src="./procedure-hand.png" alt="Nerve Surgery Procedure" />
+    <section class="nerve-section">
+        <h2 class="nerve-title">Nerve Surgery - Procedure</h2>
+
+        <div class="nerve-wrapper">
+
+            <!-- LEFT VIDEO (60%) -->
+            <div class="nerve-video">
+                <video autoplay muted loop>
+                    <source src="./aksha_PREGNANCY.mp4" type="video/mp4" />
+                </video>
             </div>
 
-            <div class="imagePanel__content">
-                <h2 class="section__title">Nerve Surgery - Procedure</h2>
-                <h3 class="subTitle">How the Treatment Is Planned &amp; Performed</h3>
+            <!-- RIGHT GRADIENT (40%) -->
+            <div class="nerve-bg"></div>
 
-                <div class="stepList">
-                    <div class="step">
-                        <div class="step__icon">1</div>
-                        <div class="step__body">
-                            <h4 class="step__title">Clinical Evaluation</h4>
-                            <p class="step__text">
-                                Detailed consultation, physical examination, and diagnostic tests such as nerve
-                                conduction studies or
-                                imaging to identify peripheral nerve damage.
-                            </p>
+            <!-- CENTER OVERLAPPING CARDS -->
+            <div class="nerve-overlay">
+                <div class="scroll-window">
+                    <div class="card-track">
+
+                        <!-- ORIGINAL -->
+                        <div class="nerve-card ">
+                            <img src="./healthicons--clinical-f-outline-24px.svg" alt="">
+                            <div>
+                                <h4>Clinical Evaluation</h4>
+                                <p>Detailed consultation, physical examination, and diagnostic tests such as nerve
+                                    conduction studies or imaging to identify peripheral nerve damage.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="step">
-                        <div class="step__icon">2</div>
-                        <div class="step__body">
-                            <h4 class="step__title">Treatment Planning</h4>
-                            <p class="step__text">
-                                The surgeon explains whether peripheral nerve surgery of the hand is required and
-                                discusses the safest
-                                surgical option.
-                            </p>
+                        <div class="nerve-card ">
+                            <img src="./Group.svg" alt="">
+                            <div>
+                                <h4>Treatment Planning</h4>
+                                <p>The surgeon explains whether peripheral nerve surgery of the hand is required and
+                                    discusses the safest surgical option.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="step">
-                        <div class="step__icon">3</div>
-                        <div class="step__body">
-                            <h4 class="step__title">Rehabilitation &amp; Follow-Up</h4>
-                            <p class="step__text">
-                                Physiotherapy helps restore hand strength, sensation, and coordination. Regular
-                                follow-ups track nerve recovery.
-                            </p>
+                        <div class="nerve-card ">
+                            <img src="./healthicons--surgical-sterilization-outline.svg" alt="">
+
+                            <div>
+                                <h4>Surgical Procedure</h4>
+                                <p>Peripheral nerve surgery is performed using microsurgical techniques to repair or
+                                    decompress affected nerves, under regional or general anesthesia..</p>
+                            </div>
+                        </div>
+
+                        <div class="nerve-card ">
+                            <img src="./hugeicons--first-aid-kit.svg" alt="">
+
+                            <div>
+                                <h4>Post-Surgery Care</h4>
+                                <p>The hand may be supported with a splint. Pain control and wound healing are closely
+                                    monitored.</p>
+                            </div>
+                        </div>
+
+                        <div class="nerve-card ">
+                            <img src="./Vector.svg" alt="">
+                            <div>
+                                <h4>Rehabilitation & Follow-Up</h4>
+                                <p>Physiotherapy helps restore hand strength, sensation, and coordination. Regular
+                                    follow-ups track nerve recovery.</p>
+                            </div>
+                        </div>
+
+                        <!-- DUPLICATE FOR LOOP -->
+
+                        <div class="nerve-card ">
+                            <img src="./healthicons--clinical-f-outline-24px.svg" alt="">
+                            <div>
+                                <h4>Clinical Evaluation</h4>
+                                <p>Detailed consultation, physical examination, and diagnostic tests such as nerve
+                                    conduction studies or imaging to identify peripheral nerve damage.</p>
+                            </div>
+                        </div>
+
+                        <div class="nerve-card ">
+                            <img src="./Group.svg" alt="">
+                            <div>
+                                <h4>Treatment Planning</h4>
+                                <p>The surgeon explains whether peripheral nerve surgery of the hand is required and
+                                    discusses the safest surgical option.</p>
+                            </div>
+                        </div>
+
+                        <div class="nerve-card ">
+                            <img src="./healthicons--surgical-sterilization-outline.svg" alt="">
+
+                            <div>
+                                <h4>Surgical Procedure</h4>
+                                <p>Peripheral nerve surgery is performed using microsurgical techniques to repair or
+                                    decompress affected nerves, under regional or general anesthesia..</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
 
     <!-- Signs / Benefits -->
-    <section class="section section--signs">
+    <section class="section--signs">
         <div class="container">
-            <h2 class="section__title">Understand the Signs. Plan the Right Peripheral Nerve Treatment</h2>
+            <h2 class="section__title"><span>Understand the Signs.</span> <br>Plan the Right Peripheral Nerve Treatment
+            </h2>
             <div class="signsGrid">
-                <article class="signCard">
-                    <h3 class="signCard__title">How the Treatment Is Planned &amp; Performed</h3>
-                    <ul class="bullets">
-                        <li>Carpal tunnel syndrome</li>
-                        <li>Ulnar nerve compression</li>
-                        <li>Median or radial nerve injuries</li>
-                        <li>Traumatic peripheral nerve cuts or damage</li>
-                        <li>Nerve compression causing hand weaknes</li>
-                    </ul>
-                </article>
-
-                <article class="signCard">
-                    <h3 class="signCard__title">Benefits of Modern Peripheral Nerve Surgery</h3>
-                    <ul class="bullets">
-                        <li>R elief from numbness, pain, and tingling</li>
-                        <li>Improved hand strength and coordination</li>
-                        <li>Precise peripheral nerve treatment using microsurgery</li>
-                        <li>Structured recovery with rehabilitation suppor</li>
-                    </ul>
-                </article>
-
-                <article class="signCard signCard--wide">
-                    <h3 class="signCard__title">How Peripheral Nerve Surgery Is Performed</h3>
-                    <p class="signCard__text">
-                        Peripheral nerve surgery of the hand is carefully planned based on the type and extent of nerve
-                        involvement.
-                        The procedure focuses on restoring nerve continuity while preserving surrounding healthy tissues
-                        for safer recovery.
-                    </p>
-
-                    <div class="pillList">
-                        <div class="pill">
-                            <h4>Ethical Treatment Approach</h4>
-                            <p>Surgery is recommended only when clinically necessary.</p>
-                        </div>
-                        <div class="pill">
-                            <h4>Thorough Evaluation</h4>
-                            <p>Each peripheral nerve condition is carefully assessed before treatment.</p>
-                        </div>
-                        <div class="pill">
-                            <h4>Expert-Led Care</h4>
-                            <p>Dr. Darshan Kumar A. Jain provides clear guidance and precision-based care.</p>
-                        </div>
-                        <div class="pill">
-                            <h4>Continuity of Care</h4>
-                            <p>
-                                Patients receive consistent support from diagnosis through recovery at our clinic in
-                                Malleshwaram,
-                                Bangalore, Karnataka.
-                            </p>
-                        </div>
+                <div class="flex">
+                    <div class="border">
+                        <article class="signCard">
+                            <h3 class="signCard__title">How the Treatment Is Planned &amp; Performed</h3>
+                            <ul class="bullets">
+                                <li>Carpal tunnel syndrome</li>
+                                <li>Ulnar nerve compression</li>
+                                <li>Median or radial nerve injuries</li>
+                                <li>Traumatic peripheral nerve cuts or damage</li>
+                                <li>Nerve compression causing hand weaknes</li>
+                            </ul>
+                        </article>
                     </div>
-                </article>
+                    <img src="./plan-1.png" alt="">
+                </div>
+
+                <div class="flex1 ">
+                    <img src="./plan-2.png" alt="">
+                    <div class="border">
+                        <article class="signCard">
+                            <h3 class="signCard__title">Benefits of Modern Peripheral Nerve Surgery</h3>
+                            <ul class="bullets">
+                                <li>R elief from numbness, pain, and tingling</li>
+                                <li>Improved hand strength and coordination</li>
+                                <li>Precise peripheral nerve treatment using microsurgery</li>
+                                <li>Structured recovery with rehabilitation suppor</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="border">
+                    <article class="signCard signCard--wide">
+                        <h3 class="signCard__title">How Peripheral Nerve Surgery Is Performed</h3>
+                        <p class="signCard__text">
+                            Peripheral nerve surgery of the hand is carefully planned based on the type and extent of
+                            nerve involvement. The procedure focuses on restoring nerve continuity while preserving
+                            surrounding healthy tissues for safer recovery.
+                        </p>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="choose-section">
+        <div class="choose-wrapper">
+            <div class="choose-bleed"></div>
+            <!-- CENTER OVERLAPPING HEADING -->
+            <div class="choose-center">
+                <div class="choose-heading">Why Choose</div>
+                <div class="choose-sub-heading">Sapiens Clinic?</div>
+            </div>
+
+            <!-- LEFT CONTENT -->
+            <div class="choose-left">
+                <div class="pillList">
+                    <div class="pill">
+                        <h4>Ethical Treatment Approach</h4>
+                        <p>Surgery is recommended only when clinically necessary.</p>
+                    </div>
+
+                    <div class="pill">
+                        <h4>Thorough Evaluation</h4>
+                        <p>Each peripheral nerve condition is carefully assessed before treatment.</p>
+                    </div>
+
+                    <div class="pill">
+                        <h4>Expert-Led Care</h4>
+                        <p>Dr. Darshan Kumar A. Jain provides clear guidance and precision-based care.</p>
+                    </div>
+
+                    <div class="pill">
+                        <h4>Continuity of Care</h4>
+                        <p>Patients receive consistent support from diagnosis through recovery at our clinic in
+                            Bangalore.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="choose-right">
+                <img src="./hospital.png" alt="Sapiens Clinic">
+            </div>
+
+        </div>
+    </section>
+
 
     <!-- Callback -->
-    <section class="callback">
-        <div class="container callback__grid">
-            <div class="callback__left">
-                <h2 class="callback__title">could not find what you are looking for?</h2>
-                <p class="callback__sub">request a callback</p>
-                <p class="callback__small">Change Number resend OTP</p>
-            </div>
-
-            <div class="callback__right">
-                <form [formGroup]="callbackForm" (ngSubmit)="submit('callback')" class="form form--flat">
-                    <div class="form__row">
-                        <label class="field">
-                            <span class="field__label">name</span>
-                            <input class="field__control" type="text" formControlName="name" />
-                        </label>
-
-                        <label class="field">
-                            <span class="field__label">mobile number</span>
-                            <div class="field__row">
-                                <input class="field__control" type="tel" formControlName="mobile" />
-                                <button class="btn btn--light" type="button" (click)="sendOtp('callback')">send
-                                    otp</button>
-                            </div>
-                        </label>
-                    </div>
-
-                    <label class="field">
-                        <span class="field__label">enter otp</span>
-                        <input class="field__control" type="text" formControlName="otp" />
-                    </label>
-
-                    <div class="form__actions">
-                        <button class="btn btn--dark" type="submit">submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
+    <div class="call-back-form" id="contact">
+        <app-call-back-from></app-call-back-from>
+    </div>
 
     <!-- FAQs -->
-    <section class="section section--faqs" id="faqs">
-        <div class="container faqsGrid">
-            <div>
-                <h2 class="section__title">FAQs</h2>
+    <div class="faqs-part" id="faqs">
+        <div class="faqs">
+            <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+                <div class="faq-question" (click)="toggleFAQ(i)" [class.active]="activeIndex === i">
+                    <div class="step-col">
+                        <div class="step-number" [class.active]="activeIndex === i">
+                            {{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }} </div>
+                        </div>
+                        <span class="q-text">{{ faq.question }}</span>
 
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(1)">
-                        <span>01&nbsp; Is peripheral nerve surgery of the hand safe?</span>
-                        <span class="faq__plus">{{ faqOpen[1] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[1]">
-                        <!-- Not shown in screenshot; keep blank to match -->
+                        <span class="icon" [class.active]="activeIndex === i">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </span>
+
+                    </div>
+
+                    <div class="faq-answer" [class.open]="activeIndex === i">
+                        {{ faq.answer }}
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Round FAQ Badge -->
+            <div class="faq-round">
+                <div class="faq-round-1">
+                    <div class="faq-round-2">
+                        <div class="faq-name">FAQs</div>
                     </div>
                 </div>
-
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(2)">
-                        <span>02&nbsp; Will peripheral nerve surgery be painful?</span>
-                        <span class="faq__plus">{{ faqOpen[2] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[2]">
-                        Pain is well controlled with medications and post-operative care.
-                    </div>
-                </div>
-
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(3)">
-                        <span>03&nbsp; How long does nerve recovery take?</span>
-                        <span class="faq__plus">{{ faqOpen[3] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[3]"></div>
-                </div>
-
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(4)">
-                        <span>04&nbsp; Is physiotherapy required after peripheral nerve surgery?</span>
-                        <span class="faq__plus">{{ faqOpen[4] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[4]"></div>
-                </div>
-
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(5)">
-                        <span>05&nbsp; When can I return to work?</span>
-                        <span class="faq__plus">{{ faqOpen[5] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[5]"></div>
-                </div>
-
-                <div class="faq">
-                    <button class="faq__q" type="button" (click)="toggleFaq(6)">
-                        <span>06&nbsp; Is surgery always needed for peripheral nerve problems?</span>
-                        <span class="faq__plus">{{ faqOpen[6] ? '−' : '+' }}</span>
-                    </button>
-                    <div class="faq__a" *ngIf="faqOpen[6]"></div>
-                </div>
-            </div>
-
-            <div class="faqBadgeWrap">
-                <div class="faqBadge">FAQs</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container footer__grid">
-            <div class="footer__col">
-                <img class="footer__logo" src="./sapiens-logo.png" alt="Sapiens Clinic" />
-            </div>
-
-            <div class="footer__col">
-                <h4 class="footer__title">Why Choose Sapiens Clinic?</h4>
-                <p class="footer__text">
-                    Evening OPD Consultation<br />
-                    Mon to sat 4:00 PM to 7:30 PM
-                </p>
-            </div>
-
-            <div class="footer__col">
-                <h4 class="footer__title">Phone Number</h4>
-                <p class="footer__text">+91 78925 56378</p>
-                <h4 class="footer__title">Email Us Here</h4>
-                <p class="footer__text">sapiensclinic@gmail.com</p>
-            </div>
-
-            <div class="footer__col">
-                <p class="footer__text">
-                    18/3, 1st Main Ranganathapura 18th cross, entrance, opposite Sankey tank, Malleshwaram, Bengaluru,
-                    Karnataka 560003.
-                </p>
-                <div class="footer__links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
-                    <a href="#">Parking Location</a>
-                    <a href="#">Clinic Map</a>
-                </div>
             </div>
         </div>
 
-        <div class="footer__bottom">
-            <div class="container footer__bottomInner">
-                <span>© 2025 All Rights Reserved</span>
-                <span class="footer__bottomRight">
-                    Phone Number +91 78925 56378 &nbsp; | &nbsp; Email Us Here sapiensclinic@gmail.com
-                </span>
-            </div>
-        </div>
-    </footer>
-</div>
+
+        <!-- Footer -->
+        <app-footer></app-footer>
+    </div>
