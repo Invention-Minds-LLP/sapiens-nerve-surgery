@@ -2115,6 +2115,7 @@ img {
 
     .sub-nav ul li {
         padding: 10px 24px;
+        font-size: 18px;
     }
 
     .sub-nav ul li:focus {
