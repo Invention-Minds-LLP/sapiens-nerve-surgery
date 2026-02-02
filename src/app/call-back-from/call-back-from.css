@@ -19,6 +19,7 @@
     border: 1px solid #FFF;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     object-fit: cover;
+    background: #E7554C;
 }
 
 .contact-heading {
@@ -151,6 +152,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media(max-width:1439px) {
     .contact-part {
@@ -162,6 +168,11 @@ button:disabled {
         gap: 0px;
 
     }
+
+   .contact-part{
+    width: 70%;
+    justify-content: center;
+   }
 
     .contact-part img {
         width: 100%;
@@ -178,9 +189,16 @@ button:disabled {
     }
 }
 
+@media(max-width:1023px){
+    .contact-info{
+        align-items: center;
+    }
+
+}
+
 @media(max-width:767px) {
     .contact-sub-heading {
-        font-size: 20px;
+        font-size: 18px;
 
     }
 
@@ -194,11 +212,21 @@ button:disabled {
         gap: 10px;
     }
 
+
+    .contact-part{
+        width: 100%;
+        height: auto;
+    }
     button {
         width: 100%;
     }
 
+    
+
     .btn {
         align-items: center;
+    }
+    .flex{
+        flex-wrap: wrap;
     }
 }

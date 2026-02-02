@@ -113,6 +113,7 @@ a{
 
 .side-menu.open {
     right: 0;
+    display: none;
 }
 
 @media (max-width: 768px) {
