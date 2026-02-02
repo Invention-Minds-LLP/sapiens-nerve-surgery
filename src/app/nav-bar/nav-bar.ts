@@ -15,4 +15,8 @@ export class NavBar {
     this.menuOpen = !this.menuOpen;
     this.menuState.emit(this.menuOpen); // ✅ send state
   }
+
+  goToDoctor() {
+    window.open('https://www.fortishealthcare.com/doctors/dr-darshan-kumar-jain-14538', '_blank');
+  }
 }

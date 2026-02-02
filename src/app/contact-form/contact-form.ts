@@ -138,7 +138,7 @@ export class ContactForm {
       mobile_number: this.appointmentForm.value.mobile_number,
       location: this.userAddress || 'Location not available',
       page_name: this.pageName,
-      domain_name: 'elbowsurgery.in'
+      domain_name: 'thenervesurgeon.in'
     };
 
     emailjs.send(
