@@ -38,7 +38,7 @@ export class App {
 
 
     this.titleService.setTitle(
-      'Expert Peripheral Nerve Surgery of the Hand in Malleshwaram | Sapiens Clinic'
+      'Peripheral Nerve Surgery of the Hand in Bangalore | Sapiens Clinic'
     );
 
     this.metaService.updateTag({
